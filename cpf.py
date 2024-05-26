@@ -1,3 +1,8 @@
+RED = "\033[31m"
+GREEN = "\033[32m"
+BLUE = "\033[34m"
+RESET = "\033[0m"
+
 cpf = input("digite o seu cpf  (somente os números) >>>")
 tam = len(cpf)
 vetor_cpf = []
@@ -12,12 +17,12 @@ else:
         vetor_cpf.append(cpf[num])
     
     #verifica se o cpf é falso (numeros repetidos)
-    cont = False
+    cont = 0
     for num in range(10):
         if vetor_cpf[num] == vetor_cpf[num + 1]:
-            cont = True
-            
-    if cont == False:
+            cont += 1
+    
+    if cont < 10:
         #verificador do primeiro digito
         i = 10
         for num in range(9):
@@ -44,6 +49,6 @@ else:
             flag = True
         
 if flag == True:
-    print(f'O cpf {cpf} é VALIDO')
+    print(f'O cpf {cpf} é {GREEN}VALIDO{RESET}')
 else:
-    print(f'o cpf {cpf} é INVALIDO')
+    print(f'o cpf {cpf} é {RED}INVALIDO{RESET}')
